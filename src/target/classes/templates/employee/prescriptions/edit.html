@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="pl">
+    <!-- Fragment zawierający style css i elementy meta -->
+    <div th:replace="fragments/config :: headFragment"></div>
+    <title>Strona główna</title>
+    <!-- Script Section (some libs need to be there) -->
+    <div th:replace="fragments/config :: scriptLibFragment"></div>
+</head>
+
+<body id="body">
+<!-- Menu Section -->
+<div th:replace="fragments/menu :: menuFragment"></div>
+
+<main id="main">
+    <section class="section">
+        <form method="post" th:object="${prescriptionData}" action="/employee/prescriptions/edit" class="my_form content_border">
+            <div class="form_title">Edytuj receptę</div>
+
+            <div class="my_group">
+                <label for="txtId" class="form_label">Identyfikator</label>
+                <input id="txtId" type="text" th:field="*{prescriptionId}" class="form_field" readonly>
+            </div>
+
+            <div class="my_group">
+                <label for="selClientId" class="form_label">Klient</label>
+                <select id="selClientId" th:field="*{clientId}" class="form_field" th:if="${!clients.isEmpty()}">
+                    <option th:each="client : ${clients}"th:utext="${client.personId}" th:value="${client.personId}"></option>
+                </select>
+            </div>
+
+            <div class="my_group">
+                <label for="dtPrescriptionDate" class="form_label">Data wystawienia</label>
+                <input id="dtPrescriptionDate" type="date" th:field="*{prescriptionDate}">
+            </div>
+
+            <div class="my_group">
+                <input type="submit" value="Zapisz zmiany" class="form_button">
+                <a th:href="@{/employee/prescriptions}" class="form_button form_link">Powrót</a>
+            </div>
+        </form>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<div th:replace="fragments/footer :: footerFragment"></div>
+<!-- Script Section (other, custom scripts) -->
+<div th:replace="fragments/config :: scriptCustomFragment"></div>
+</body>
+</html>

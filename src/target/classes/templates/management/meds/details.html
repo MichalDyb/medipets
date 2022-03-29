@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="pl">
+    <!-- Fragment zawierający style css i elementy meta -->
+    <div th:replace="fragments/config :: headFragment"></div>
+    <title>Strona główna</title>
+    <!-- Script Section (some libs need to be there) -->
+    <div th:replace="fragments/config :: scriptLibFragment"></div>
+</head>
+
+<body id="body">
+<!-- Menu Section -->
+<div th:replace="fragments/menu :: menuFragment"></div>
+
+<main id="main">
+    <section class="section">
+        <div class="my_detail content_border">
+            <div class="form_title">Szczegóły leku</div>
+
+            <h1>Identyfikator: </h1>
+            <h5 th:utext="${medicine.medicineId}"></h5>
+
+            <h1>Nazwa: </h1>
+            <h5 th:utext="${medicine.medicine}"></h5>
+
+            <h1>Cena: </h1>
+            <h5 th:utext="${medicine.medicinePrice}"></h5>
+
+            <a th:href="@{/management/meds}" class="form_button form_link">Powrót</a>
+        </div>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<div th:replace="fragments/footer :: footerFragment"></div>
+<!-- Script Section (other, custom scripts) -->
+<div th:replace="fragments/config :: scriptCustomFragment"></div>
+</body>
+</html>

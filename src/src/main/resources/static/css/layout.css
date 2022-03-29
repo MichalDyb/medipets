@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: hsl(0, 0%, 10%);
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+}
+
+#static_nav, #dynamic_nav {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#main {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#footer {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin-top: auto;
+}

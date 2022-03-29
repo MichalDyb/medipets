@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="pl">
+    <!-- Fragment zawierający style css i elementy meta -->
+    <div th:replace="fragments/config :: headFragment"></div>
+    <title>Strona główna</title>
+    <!-- Script Section (some libs need to be there) -->
+    <div th:replace="fragments/config :: scriptLibFragment"></div>
+</head>
+
+<body id="body">
+<!-- Menu Section -->
+<div th:replace="fragments/menu :: menuFragment"></div>
+
+<main id="main">
+    <section class="section">
+        <table class="my_table">
+            <caption class="my_table_title">
+                Lista wizyt</br>
+                <a th:href="@{/employee/visits/search}" class="add_link">Wyszukaj wizyte</a>
+            </caption>
+
+            <tr class="my_thead">
+                <td>Identyfikator</td>
+                <td>Data i czas</td>
+                <td>Cena</td>
+                <td>Zapłacono</td>
+                <td>Status</td>
+            </tr>
+
+            <tr class="my_tbody" th:if="${visits.isEmpty()}">
+                <td><h3 style="text-align:center; margin-top:5px; margin-bottom:5px;">Lista jest pusta.</h3></td>
+            </tr>
+
+            <tr th:each="visit : ${visits}" class="my_tbody">
+                <td th:utext="${visit.visitId}"></td>
+                <td th:utext="${visit.visitDate}"></td>
+                <td th:utext="${visit.visitPrice}"></td>
+                <td th:utext="${visit.isPaid} == true ? 'Tak' : 'Nie'"></td>
+                <td th:utext="${visit.visitStatus}"></td>
+
+                <td class="my_table_options">
+                    <a th:href="@{'/employee/visits/edit/' + ${visit.visitId}}">Edytuj</a> |
+                    <a th:href="@{'/employee/visits/addTreatment/' + ${visit.visitId}}">Dodaj zabieg</a> |
+                    <a th:href="@{'/employee/prescriptions/add/' + ${visit.visitId}}">Dodaj receptę</a> |
+                    <a th:href="@{'/employee/visits/' + ${visit.visitId}}">Szczególy</a>
+                </td>
+            </tr>
+        </table>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<div th:replace="fragments/footer :: footerFragment"></div>
+<!-- Script Section (other, custom scripts) -->
+<div th:replace="fragments/config :: scriptCustomFragment"></div>
+</body>
+</html>

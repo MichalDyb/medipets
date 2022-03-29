@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+#main {
+    color: hsl(0, 0%, 90%);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}
+
+#main h1, #main h2, #main h3, #main h4, #main h5, #main h6 {
+    font-family: 'Raleway', sans-serif;
+}
+
+#main h1    {font-size: 36px; font-weight: 600;}
+#main h2    {font-size: 35px; font-weight: 600;}
+#main h3    {font-size: 32px; font-weight: 600;}
+#main h4    {font-size: 29px; font-weight: 600;}
+#main h5    {font-size: 26px; font-weight: 600;}
+#main h6    {font-size: 23px; font-weight: 600;}
+#main p     {font-size: 20px;}
+
+.content_border {
+    border: 2px solid hsl(0, 0%, 65%);
+}
+
+.section {
+    flex-basis: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    margin: 15px;
+}
+
+.my_form {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.my_group {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 7.5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.form_title, .form_label, .form_field, .form_error, .form_error_link, .form_button{
+    display: block;
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.form_title, .form_label{
+    font-weight: 600;
+}
+
+.form_title {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: hsl(195, 100%, 26%);
+    text-align:center;
+    font-size: 32px;
+    font-weight: 600;
+    color: hsl(0, 0%, 100%);
+}
+
+.form_label {
+    padding-bottom: 0px;
+}
+
+.form_label, .form_error {
+    text-align: center;
+}
+
+.form_field {
+    padding: 2.5px 10px 2.5px 10px;
+}
+
+.form_field:focus {
+    background-color: hsl(112, 100%, 85%);
+}
+
+.form_error {
+    font-size: 0.9em;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: hsl(40, 100%, 50%);
+}
+
+.form_error_link {
+    font-size: 1.2em;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: hsl(40, 100%, 50%);
+    text-align: center;
+}
+
+.form_error_link:hover {
+    padding-left: 5px;
+    padding-right: 5px;
+    color: hsl(40, 100%, 60%);
+    text-decoration: none;
+}
+
+.input_error {
+    background-color: hsl(40, 100%, 85%);
+}
+
+.form_button {
+    margin-bottom: 5px;
+    padding: 10px 15px 10px 15px;
+    border: 0;
+    background-color: hsl(195, 100%, 26%);
+    font-weight: 600;
+    color: hsl(0, 0%, 100%);
+}
+
+.form_button:hover {
+    background-color: hsl(195, 100%, 36%);
+}
+
+.form_link {
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.form_link:hover {
+    text-decoration: none;
+    color: hsl(0, 0%, 100%);
+}
+
+.my_table_title {
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: hsl(195, 100%, 26%);
+    text-align:center;
+    font-size: 34px;
+    font-weight: 600;
+    color: hsl(0, 0%, 100%);
+    border-left: 2px solid hsl(0, 0%, 65%);
+    border-top: 2px solid hsl(0, 0%, 65%);
+    border-right: 2px solid hsl(0, 0%, 65%);
+    border-bottom: 1px solid hsl(0, 0%, 65%);
+    border-collapse: collapse;
+}
+
+.my_thead, .my_tbody{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid hsl(0, 0%, 65%);
+    border-collapse: collapse;
+}
+
+.my_thead {
+    background-color: hsl(195, 100%, 26%);
+    color: hsl(0, 0%, 100%);
+}
+
+.my_thead > td, .my_tbody > td {
+    display: block;
+    flex: 1 250px;
+    padding: 4px 7.5px 4px 7.5px;
+    text-align: left;
+    border: 1px solid hsl(0, 0%, 65%);
+    border-collapse: collapse;
+}
+
+.my_thead > td {
+    font-weight: 600;
+}
+
+.my_tbody:nth-child(odd) {
+    background-color: hsl(0, 0%, 5%);
+}
+
+.my_tbody:nth-child(even) {
+    background-color: hsl(0, 0%, 10%);
+}
+
+.my_table_options {
+    flex: 100% !important;
+    text-align:center !important;
+}
+
+.my_table_options > a {
+    color: hsl(211, 100%, 50%);
+}
+
+.my_table_options > a:hover {
+    color: hsl(211, 100%, 60%);
+    text-decoration: none;
+}
+
+.add_link {
+    color: hsl(0, 0%, 95%);
+    font-size: 26px;
+}
+
+.add_link:hover {
+    color: hsl(0, 0%, 100%);
+    text-decoration: none;
+}
+
+.my_detail {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.my_detail > .form_link {
+    max-width: 350px;
+    align-self: center;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+.my_detail > h1, .my_detail > h2, .my_detail > h3, .my_detail > h4, .my_detail > h5, .my_detail > h6, .my_detail > p {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.error_page {
+    background-color:hsl(0, 50%, 45%) !important;
+}
+
+a.error_page:hover {
+    background-color:hsl(0, 50%, 55%) !important;
+}
+
+/* */

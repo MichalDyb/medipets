@@ -1,0 +1,25 @@
+#footer {
+    padding: 15px 25px 15px 25px;
+    background-color: hsl(0, 0%, 5%);
+    justify-content: center;
+    border-top: 1px solid hsl(0, 0%, 0%);
+}
+
+#footer a {
+    margin-left: 10px;
+    margin-right: 10px;
+    white-space: nowrap;
+    font-size: 16px;
+    font-family: "Georgia", serif;
+    color: hsl(0, 0%, 95%);
+}
+
+footer a:hover {
+    color: hsl(0, 0%, 100%);
+}
+
+#copyright {
+    flex-basis: 100%;
+    text-align: center;
+    color: hsl(0, 0%, 65%);
+}

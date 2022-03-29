@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="pl">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body th:fragment="menuFragment" th:remove="tag">
+<header id="header">
+
+    <div id="static_menu">
+        <nav id="static_nav">
+            <a th:href="@{/}" id="home_link"><img th:src="@{/images/home-logo.png}" id="home_logo"></a>
+
+            <div id="home_description">The best care for your pet</div>
+            <div id="static_option">
+            <button id="static_option_button" class="hide_log">Opcje logowania<div class="arrow_image_down arrow_margin"></div></button>
+                <div id="static_option_menu" class="hide">
+                    <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Zaloguj się</a></li>
+                    <a th:href="@{/register}" sec:authorize="!isAuthenticated()">Załóż konto</a></li>
+                    <a th:href="@{/client}" sec:authorize="hasAnyAuthority('ROLE_USER')">Profil</a></li>
+                    <a th:href="@{/account}" sec:authorize="hasAnyAuthority('ROLE_USER')">Ustawienia</a></li>
+                    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Wyloguj się</a></li>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div id="dynamic_menu">
+        <nav id="dynamic_nav">
+            <div class="left">
+                <a th:href="@{/}"><img th:src="@{/images/home-icon.png}" class="dynamic_nav_img"></a>
+                <a href="#static_menu"><img th:src="@{/images/arrow-up.png}" class="dynamic_nav_img"></a>
+                <a href="#footer"><img th:src="@{/images/arrow-down.png}" class="dynamic_nav_img"></a><!--
+                --><a href="javascript:void(0);" id="offer_button" class="hide_menu" >Oferta<div class="arrow_image_down arrow_margin"></div></a><!--
+                --><a href="javascript:void(0);" id="animal_button" class="hide_menu">Dla zwierzaka<div class="arrow_image_down arrow_margin"></div></a><!--
+                --><a href="javascript:void(0);" id="staff_button" class="hide_menu" sec:authorize="hasAnyAuthority('ROLE_STAFF', 'ROLE_SUPERUSER')">Pracownik<div class="arrow_image_down arrow_margin"></div></a><!--
+                --><a href="javascript:void(0);" id="management_button" class="hide_menu" sec:authorize="hasAnyAuthority('ROLE_SUPERUSER')">Zarządzanie<div class="arrow_image_down arrow_margin"></div></a>
+            </div>
+            <div class="right">
+                <a href="javascript:void(0);" id="all_button" class="hide_menu"><img th:src="@{/images/menu-icon.png}" class="dynamic_nav_img"></a>
+            </div>
+
+            <div class="collapsed_menu scrollable hide" id="offer_menu">
+                <div class="x_icon"><img th:src="@{/images/x-icon.png}" class="x_icon_image"></div>
+                <div class="collapesd_menu_box">
+                    <p class="category">Kategoria</p>
+                    <a th:href="@{/}">Opcja 1</a>
+                    <a th:href="@{/}">Opcja 2</a>
+                    <a th:href="@{/}">Opcja 3</a>
+                </div>
+            </div>
+            <div class="collapsed_menu scrollable hide" id="animal_menu">
+                <div class="x_icon"><img th:src="@{/images/x-icon.png}" class="x_icon_image"></div>
+                <div class="collapesd_menu_box">
+                    <p class="category">Kategoria</p>
+                    <a th:href="@{/}">Opcja 1</a>
+                    <a th:href="@{/}">Opcja 2</a>
+                    <a th:href="@{/}">Opcja 3</a>
+                </div>
+            </div>
+            <div class="collapsed_menu scrollable hide" id="staff_menu">
+                <div class="x_icon"><img th:src="@{/images/x-icon.png}" class="x_icon_image"></div>
+                <div class="collapesd_menu_box">
+                    <p class="category">Klienci</p>
+                    <a th:href="@{/employee/clients}">Wszyscy</a>
+                    <a th:href="@{/employee/clients/search}">Wyszukaj</a>
+                    <a th:href="@{/employee/clients/add}">Dodaj</a>
+                </div>
+                <div class="collapesd_menu_box">
+                    <p class="category">Zwierzaki</p>
+                    <a th:href="@{/employee/pets}">Wszystkie</a>
+                    <a th:href="@{/employee/pets/search}">Wyszukaj</a>
+                    <a th:href="@{/employee/pets/add}">Dodaj</a>
+                </div>
+                <div class="collapesd_menu_box">
+                    <p class="category">Gatunki</p>
+                    <a th:href="@{/employee/species}">Wszystkie</a>
+                    <a th:href="@{/employee/species/search}">Wyszukaj</a>
+                    <a th:href="@{/employee/species/add}">Dodaj</a>
+                </div>
+                <div class="collapesd_menu_box">
+                    <p class="category">Rasy</p>
+                    <a th:href="@{/employee/breeds}">Wszystkie</a>
+                    <a th:href="@{/employee/breeds/search}">Wyszukaj</a>
+                    <a th:href="@{/employee/breeds/add}">Dodaj</a>
+                </div>
+                <div class="collapesd_menu_box">
+                    <p class="category">Wizyty</p>
+                    <a th:href="@{/employee/visits}">Wszystkie</a>
+                    <a th:href="@{/employee/visits/search}">Wyszukaj</a>
+                </div>
+                <div class="collapesd_menu_box">
+                    <p class="category">Recepty</p>
+                    <a th:href="@{/employee/prescriptions}">Wszystkie</a>
+                    <a th:href="@{/employee/prescriptions/search}">Wyszukaj</a>
+                </div>
+            </div>
+            <div class="collapsed_menu scrollable hide" id="management_menu">
+                <div class="x_icon"><img th:src="@{/images/x-icon.png}" class="x_icon_image"></div>
+                <div class="collapesd_menu_box">
+                    <p class="category">Pracownicy</p>
+                    <a th:href="@{/management/employees}">Wszyscy</a>
+                    <a th:href="@{/management/employees/search}">Wyszukaj</a>
+                    <a th:href="@{/management/employees/add}">Dodaj</a>
+                </div>
+                <div class="collapesd_menu_box">
+                    <p class="category">Leki</p>
+                    <a th:href="@{/management/meds}">Wszystkie</a>
+                    <a th:href="@{/management/meds/search}">Wyszukaj</a>
+                    <a th:href="@{/management/meds/add}">Dodaj</a>
+                </div>
+                <div class="collapesd_menu_box">
+                    <p class="category">Zabiegi</p>
+                    <a th:href="@{/management/treatments}">Wszystkie</a>
+                    <a th:href="@{/management/treatments/search}">Wyszukaj</a>
+                    <a th:href="@{/management/treatments/add}">Dodaj</a>
+                </div>
+            </div>
+
+            <div class="collapsed_menu scrollable hide" id="all_menu">
+                <div class="x_icon"><img th:src="@{/images/x-icon.png}" class="x_icon_image"></div>
+                <div class="collapsed_menu_container" id="offer_allmenu">
+                    <div class="category_button hide_category">Oferta<div class="arrow_image_down arrow_margin"></div></div>
+                    <div class="collapesd_menu_box">
+                        <p class="category">Kategoria</p>
+                        <a th:href="@{/}">Opcja 1</a>
+                        <a th:href="@{/}">Opcja 2</a>
+                        <a th:href="@{/}">Opcja 3</a>
+                    </div>
+                </div>
+                <div class="collapsed_menu_container" id="animal_allmenu">
+                    <div class="category_button hide_category">Dla zwierzaka<div class="arrow_image_down arrow_margin"></div></div>
+                    <div class="collapesd_menu_box">
+                        <p class="category">Kategoria</p>
+                        <a th:href="@{/}">Opcja 1</a>
+                        <a th:href="@{/}">Opcja 2</a>
+                        <a th:href="@{/}">Opcja 3</a>
+                    </div>
+                </div>
+                <div class="collapsed_menu_container" id="staff_allmenu" sec:authorize="hasAnyAuthority('ROLE_STAFF', 'ROLE_SUPERUSER')">
+                    <div class="category_button hide_category">Pracownik<div class="arrow_image_down arrow_margin"></div></div>
+                    <div class="collapesd_menu_box">
+                        <p class="category">Klienci</p>
+                        <a th:href="@{/employee/clients}">Wszyscy</a>
+                        <a th:href="@{/employee/clients/search}">Wyszukaj</a>
+                        <a th:href="@{/employee/clients/add}">Dodaj</a>
+                    </div>
+                    <div class="collapesd_menu_box">
+                        <p class="category">Zwierzaki</p>
+                        <a th:href="@{/employee/pets}">Wszystkie</a>
+                        <a th:href="@{/employee/pets/search}">Wyszukaj</a>
+                        <a th:href="@{/employee/pets/add}">Dodaj</a>
+                    </div>
+                    <div class="collapesd_menu_box">
+                        <p class="category">Gatunki</p>
+                        <a th:href="@{/employee/species}">Wszystkie</a>
+                        <a th:href="@{/employee/species/search}">Wyszukaj</a>
+                        <a th:href="@{/employee/species/add}">Dodaj</a>
+                    </div>
+                    <div class="collapesd_menu_box">
+                        <p class="category">Rasy</p>
+                        <a th:href="@{/employee/breeds}">Wszystkie</a>
+                        <a th:href="@{/employee/breeds/search}">Wyszukaj</a>
+                        <a th:href="@{/employee/breeds/add}">Dodaj</a>
+                    </div>
+                    <div class="collapesd_menu_box">
+                        <p class="category">Wizyty</p>
+                        <a th:href="@{/employee/visits}">Wszystkie</a>
+                        <a th:href="@{/employee/visits/search}">Wyszukaj</a>
+                    </div>
+                    <div class="collapesd_menu_box">
+                        <p class="category">Recepty</p>
+                        <a th:href="@{/employee/prescriptions}">Wszystkie</a>
+                        <a th:href="@{/employee/prescriptions/search}">Wyszukaj</a>
+                        <a th:href="@{/employee/prescriptions/add}">Dodaj</a>
+                    </div>
+                </div>
+                <div class="collapsed_menu_container" id="management_allmenu" sec:authorize="hasAnyAuthority('ROLE_SUPERUSER')">
+                    <div class="category_button hide_category">Zarządzanie<div class="arrow_image_down arrow_margin"></div></div>
+                    <div class="collapesd_menu_box">
+                        <p class="category">Pracownicy</p>
+                        <a th:href="@{/management/employees}">Wszyscy</a>
+                        <a th:href="@{/management/employees/search}">Wyszukaj</a>
+                        <a th:href="@{/management/employees/add}">Dodaj</a>
+                    </div>
+                    <div class="collapesd_menu_box">
+                        <p class="category">Leki</p>
+                        <a th:href="@{/management/meds}">Wszystkie</a>
+                        <a th:href="@{/management/meds/search}">Wyszukaj</a>
+                        <a th:href="@{/management/meds/add}">Dodaj</a>
+                    </div>
+                    <div class="collapesd_menu_box">
+                        <p class="category">Zabiegi</p>
+                        <a th:href="@{/management/treatments}">Wszystkie</a>
+                        <a th:href="@{/management/treatments/search}">Wyszukaj</a>
+                        <a th:href="@{/management/treatments/add}">Dodaj</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+</header>
+
+</body>
+</html>

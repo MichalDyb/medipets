@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="pl">
+    <!-- Fragment zawierający style css i elementy meta -->
+    <div th:replace="fragments/config :: headFragment"></div>
+    <title>Strona główna</title>
+    <!-- Script Section (some libs need to be there) -->
+    <div th:replace="fragments/config :: scriptLibFragment"></div>
+</head>
+
+<body id="body">
+<!-- Menu Section -->
+<div th:replace="fragments/menu :: menuFragment"></div>
+
+<main id="main">
+    <section class="section">
+        <div class="my_detail content_border">
+            <div class="form_title">Szczegóły zabiegu</div>
+
+            <h1>Identyfikator: </h1>
+            <h5 th:utext="${treatment.treatmentId}"></h5>
+
+            <h1>Nazwa: </h1>
+            <h5 th:utext="${treatment.treatment}"></h5>
+
+            <h1>Cena: </h1>
+            <h5 th:utext="${treatment.treatmentPrice}"></h5>
+
+            <table class="my_table">
+                <caption class="my_table_title">
+                    Lista gatunków kwalifikujących się do zabiegu</br>
+                    <a th:href="@{'/management/treatments/addSpecies/' + ${treatment.treatmentId}}" class="add_link">Dodaj kwalifikujący się gatunek</a>
+                </caption>
+
+                <tr class="my_thead">
+                    <td>Identyfikator</td>
+                    <td>Gatunek</td>
+                </tr>
+
+                <tr class="my_tbody" th:if="${treatment.treatmentsSpecies.isEmpty()}">
+                    <td><h3 style="text-align: center; margin-top: 5px; margin-bottom: 5px;">Lista jest pusta</h3></td>
+                </tr>
+
+                <tr class="my_tbody" th:each="treatmentSpecies : ${treatment.treatmentsSpecies}">
+                    <td th:utext="${treatmentSpecies.speciesId.speciesId}"></td>
+                    <td th:utext="${treatmentSpecies.speciesId.species}"></td>
+                </tr>
+            </table>
+            <br/>
+
+            <a th:href="@{/management/treatments}" class="form_button form_link">Powrót</a>
+        </div>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<div th:replace="fragments/footer :: footerFragment"></div>
+<!-- Script Section (other, custom scripts) -->
+<div th:replace="fragments/config :: scriptCustomFragment"></div>
+</body>
+</html>

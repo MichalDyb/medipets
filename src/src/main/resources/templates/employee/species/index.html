@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="pl">
+    <!-- Fragment zawierający style css i elementy meta -->
+    <div th:replace="fragments/config :: headFragment"></div>
+    <title>Strona główna</title>
+    <!-- Script Section (some libs need to be there) -->
+    <div th:replace="fragments/config :: scriptLibFragment"></div>
+</head>
+
+<body id="body">
+<!-- Menu Section -->
+<div th:replace="fragments/menu :: menuFragment"></div>
+
+<main id="main">
+    <section class="section">
+        <table class="my_table">
+            <caption class="my_table_title">
+                Lista gatunków</br>
+                <a th:href="@{/employee/species/search}" class="add_link">Wyszukaj gatunek</a></br>
+                <a th:href="@{/employee/species/add}" class="add_link">Dodaj gatunek</a>
+            </caption>
+
+            <tr class="my_thead">
+                <td>Identyfikator</td>
+                <td>Gatunek</td>
+            </tr>
+
+            <tr class="my_tbody" th:if="${species.isEmpty()}">
+                <td><h3 style="text-align:center; margin-top:5px; margin-bottom:5px;">Lista jest pusta.</h3></td>
+            </tr>
+
+            <tr th:each="specie : ${species}" class="my_tbody">
+                <td th:utext="${specie.speciesId}"></td>
+                <td th:utext="${specie.species}"></td>
+
+                <td class="my_table_options">
+                    <a th:href="@{'/employee/species/edit/' + ${specie.speciesId}}">Edytuj</a> |
+                    <a th:href="@{'/employee/species/' + ${specie.speciesId}}">Szczególy</a>
+                </td>
+            </tr>
+        </table>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<div th:replace="fragments/footer :: footerFragment"></div>
+<!-- Script Section (other, custom scripts) -->
+<div th:replace="fragments/config :: scriptCustomFragment"></div>
+</body>
+</html>

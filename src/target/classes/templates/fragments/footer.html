@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="pl">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body th:fragment="footerFragment" th:remove="tag">
+<footer id="footer">
+    <a th:href="@{/}">Strona Główna</a>
+    <a th:href="@{/}">O nas</a>
+    <a th:href="@{/}">Kontakt</a>
+    <a th:href="@{/}">Pomoc</a>
+    <a th:href="@{/}">Warunki użytkowania</a>
+    <a th:href="@{/}">Polityka plików cookies</a>
+    <a th:href="@{/}">Reklama</a>
+    <a th:href="@{/}">Usługi</a>
+    <a th:href="@{/}">Informacje o autorze</a>
+    <span id="copyright"></span>
+</footer>
+
+</body>
+</html>

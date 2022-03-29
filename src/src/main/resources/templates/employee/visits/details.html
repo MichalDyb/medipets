@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="pl">
+    <!-- Fragment zawierający style css i elementy meta -->
+    <div th:replace="fragments/config :: headFragment"></div>
+    <title>Strona główna</title>
+    <!-- Script Section (some libs need to be there) -->
+    <div th:replace="fragments/config :: scriptLibFragment"></div>
+</head>
+
+<body id="body">
+<!-- Menu Section -->
+<div th:replace="fragments/menu :: menuFragment"></div>
+
+<main id="main">
+    <section class="section">
+        <div class="my_detail content_border">
+            <div class="form_title">Szczegóły wizyty</div>
+
+            <h1>Identyfikator: </h1>
+            <h5 th:utext="${visit.visitId}"></h5>
+
+            <h1>Zwierzak: </h1>
+            <h5 th:utext="${'Imię: ' + visit.petId.petName + ', Rasa: ' + visit.petId.breedId.breed + ', Gatunek: ' + visit.petId.speciesId.species}"></h5>
+
+            <h1>Data i czas wizyty: </h1>
+            <h5 th:utext="${visit.visitDate}"></h5>
+
+            <h1>Cena: </h1>
+            <h5 th:utext="${visit.visitPrice}"></h5>
+
+            <h1>Zapłacono: </h1>
+            <h5 th:utext="${visit.isPaid} == true ? 'Tak' : 'Nie'"></h5>
+
+            <h1>Opis: </h1>
+            <h5 th:utext="${visit.visitStatus}"></h5>
+
+            <h1>Zabiegi: </h1>
+            <table class="my_table">
+                <caption class="my_table_title">
+                    Lista zabiegów</br>
+                    <a th:href="@{'/employee/visits/addTreatment/' + ${visit.visitId}}" class="add_link">Dodaj zabieg</a>
+                </caption>
+
+                <tr class="my_thead">
+                    <td>Identyfikator</td>
+                    <td>Zabieg</td>
+                </tr>
+
+                <tr class="my_tbody" th:if="${visit.treatmentsVisits.isEmpty()}">
+                    <td><h3 style="text-align: center; margin-top: 5px; margin-bottom: 5px;">Lista jest pusta</h3></td>
+                </tr>
+
+                <tr class="my_tbody" th:each="treatmentVisit : ${visit.treatmentsVisits}">
+                    <td th:utext="${treatmentVisit.treatmentId.treatmentId}"></td>
+                    <td th:utext="${treatmentVisit.treatmentId.treatment}"></td>
+                </tr>
+            </table>
+            <br/>
+
+            <a th:href="@{/employee/visits}" class="form_button form_link">Powrót</a>
+        </div>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<div th:replace="fragments/footer :: footerFragment"></div>
+<!-- Script Section (other, custom scripts) -->
+<div th:replace="fragments/config :: scriptCustomFragment"></div>
+</body>
+</html>

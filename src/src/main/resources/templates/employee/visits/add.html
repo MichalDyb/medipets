@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="pl">
+    <!-- Fragment zawierający style css i elementy meta -->
+    <div th:replace="fragments/config :: headFragment"></div>
+    <title>Strona główna</title>
+    <!-- Script Section (some libs need to be there) -->
+    <div th:replace="fragments/config :: scriptLibFragment"></div>
+</head>
+
+<body id="body">
+<!-- Menu Section -->
+<div th:replace="fragments/menu :: menuFragment"></div>
+
+<main id="main">
+    <section class="section">
+        <form method="post" th:object="${visitData}" action="/employee/visits/add">
+            <input type="hidden" th:field="*{petId}">
+            <div class="form_title">Dodaj wizytę</div>
+
+            <div class="my_group">
+                <label for="petData">Identyfikator zwierzaka</label>
+                <input id="petData" type="text" readonly="readonly" class="form_input" th:value="*{petId}">
+            </div>
+
+            <div class="my_group">
+                <label for="dpDate">Data wizyty</label>
+                <input id="dpDate" type="date" class="form_input" th:field="*{visitDate}">
+            </div>
+
+            <div class="my_group">
+                <label for="dpTime">Czas wizyty</label>
+                <input id="dpTime" type="time" class="form_input" th:field="*{visitTime}">
+            </div>
+
+            <div class="my_group">
+                <label for="txtPrice">Cena</label>
+                <input id="txtPrice" type="number" min="1" step="any" class="form_input" th:field="*{visitPrice}">
+            </div>
+
+            <div class="my_group">
+                <label for="chkIsPaid">Czy zapłacono?</label>
+                <input id="chkIsPaid" type="checkbox" class="form_input" th:field="*{isPaid}" value="true">
+            </div>
+
+            <div class="my_group">
+                <label for="txtVisit" class="form_label">Opcja</label>
+                <select id="txtVisit" class="form_field" th:field="*{visitStatus}">
+                    <option value="Zaplanowana">Zaplanowana</option>
+                    <option value="Odwołana">Odwołana</option>
+                    <option value="Przełożona">Przełożona</option>
+                    <option value="Zakończona">Zakończona</option>
+                </select>
+            </div>
+
+            <div class="my_group">
+                <input type="reset" value="Wyczyść formularz" class="form_button">
+                <input type="submit" value="Dodaj wizytę" class="form_button">
+                <a th:href="@{/employee/visits}" class="form_button form_link">Powrót</a>
+            </div>
+        </form>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<div th:replace="fragments/footer :: footerFragment"></div>
+<!-- Script Section (other, custom scripts) -->
+<div th:replace="fragments/config :: scriptCustomFragment"></div>
+</body>
+</html>
